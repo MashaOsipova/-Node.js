@@ -1,13 +1,29 @@
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-  },
-  extends: "google",
-  overrides: [],
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-  },
-  rules: {},
-};
+{
+    "plugins": [
+        "prettier",
+        "unicorn"
+      ],
+      "extends": [
+        "airbnb-base",            // index.js
+        "plugin:unicorn/recommended",
+        "plugin:prettier/recommended",
+        "prettier"        
+      ],
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },   
+    "rules": {
+        "no-console": "off",
+        "no-restricted-syntax": [
+            "error",
+            {
+                "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+                "message": "Unexpected property on console object was called"
+            }
+        ],
+        "no-debugger": "off",
+        "unicorn/prefer-module": "off"
+    }
+}
